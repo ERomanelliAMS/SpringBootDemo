@@ -15,7 +15,7 @@ public class LoginPage extends BasePage{
     public WebElement txtEmail;
     @FindBy(how = How.NAME, using = "password")
     public WebElement txtPassword;
-    @FindBy(how = How.XPATH, using = "//*[@id=\"root\"]/div/div[2]/div/form/button/span[1]")
+    @FindBy(how = How.XPATH, using = "//span[.='Login']")
     public WebElement btnLogin;
 
     public void enterData(String userName, String password)

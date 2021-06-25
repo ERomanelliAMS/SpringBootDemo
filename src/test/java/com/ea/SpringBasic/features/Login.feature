@@ -6,7 +6,7 @@ Feature: LoginFeature
       | username | password      |
       | admin    | password      |
     And I click login button
-    And I wait for 2000 miliseconds
+    And I wait for 3000 miliseconds
     Then I should see the Guides page
     And I click logout link
 

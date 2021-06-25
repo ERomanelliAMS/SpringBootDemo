@@ -22,7 +22,7 @@ public class GuidesPage extends BasePage{
     @FindBy(how = How.ID, using = "//*[@id=\"notistack-snackbar\"]")
     public WebElement loginSnackbar;
 
-    @FindBy(how = How.XPATH, using = "//*[@id=\"root\"]/div[2]/div/div/div/div/div/div[2]/div/button")
+    @FindBy(how = How.XPATH, using = "//div[@role='alert']/div[2]/div")
     public WebElement closeLoginSnackBarButton;
 
     @FindBy(how = How.XPATH, using = "//span[.='Logout']")
