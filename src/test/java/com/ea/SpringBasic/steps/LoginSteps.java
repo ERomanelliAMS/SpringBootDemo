@@ -2,20 +2,21 @@ package com.ea.SpringBasic.steps;
 
 import com.ea.SpringBasic.models.TestUserDetails;
 import com.ea.SpringBasic.models.UserDetails;
-import com.ea.SpringBasic.pages.HomePage;
+import com.ea.SpringBasic.pages.GuidesPage;
 import com.ea.SpringBasic.pages.LoginPage;
 import io.cucumber.datatable.DataTable;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
-import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.testng.Assert;
 
 public class LoginSteps {
 
     @Autowired
-    public HomePage homePage;
+    public GuidesPage guidesPage;
 
     @Autowired
     public LoginPage loginPage;
@@ -23,31 +24,43 @@ public class LoginSteps {
     @Autowired
     private TestUserDetails testUserDetails;
 
-    @Given("I click login in Home Page")
-    public void iClickLoginInHomePage() {
+    @Autowired
+    private WebDriver webDriver;
 
-        homePage.ClickLogin();
+    @Given("I enter the following for Login")
+    public void iEnterDataForLoging(DataTable table) {
 
         //Scenario scope
-        testUserDetails.setUserDetails(new UserDetails("admin", "password"));
+        testUserDetails.setUserDetails(new UserDetails("ezeuniversity03@test.com", "avemaria1"));
+
+        loginPage.enterData(testUserDetails.getUserDetails().getUsername(), testUserDetails.getUserDetails().getPassword());
+
     }
-
-
 
     @And("I click login button")
     public void iClickLoginButton() {
         loginPage.ClickLogin();
     }
 
-    @Then("I should see the userform page")
-    public void iShouldSeeTheUserformPage() {
-        Assert.assertEquals(homePage.isEmployeeDetailsExist() , true);
+    @And("I wait for {int} miliseconds")
+    public void iWaitForMiliseconds(int arg0) {
 
+        try {
+            Thread.sleep(arg0);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 
+    @Then("I should see the Guides page")
+    public void iShouldSeeTheGuidesPage() {
+        guidesPage.closeLoginModal();
+        Assert.assertEquals(guidesPage.isGuidesListHeaderExist() , true);
+    }
 
     @And("I click logout link")
     public void iClickLogoutLink() {
-        homePage.ClickLogoff();
+        guidesPage.LogOff();
     }
+
 }

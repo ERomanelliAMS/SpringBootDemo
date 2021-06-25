@@ -1,37 +1,32 @@
 package com.ea.SpringBasic.pages;
 
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
-import org.openqa.selenium.support.PageFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.config.ConfigurableBeanFactory;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
-
-import javax.annotation.PostConstruct;
 
 @Component
 @Scope(ConfigurableBeanFactory.SCOPE_PROTOTYPE)
 public class LoginPage extends BasePage{
 
-    @FindBy(how = How.NAME, using = "UserName")
-    public WebElement txtUserName;
-    @FindBy(how = How.NAME, using = "Password")
+    @FindBy(how = How.NAME, using = "email")
+    public WebElement txtEmail;
+    @FindBy(how = How.NAME, using = "password")
     public WebElement txtPassword;
-    @FindBy(how = How.CSS, using = ".btn-default")
+    @FindBy(how = How.XPATH, using = "//*[@id=\"root\"]/div/div[2]/div/form/button/span[1]")
     public WebElement btnLogin;
 
-    public void Login(String userName, String password)
+    public void enterData(String userName, String password)
     {
-        txtUserName.sendKeys(userName);
+        txtEmail.sendKeys(userName);
         txtPassword.sendKeys(password);
     }
 
-    public HomePage ClickLogin() {
+    public GuidesPage ClickLogin() {
         btnLogin.click();
-        return new HomePage();
+        return new GuidesPage();
     }
 
 }

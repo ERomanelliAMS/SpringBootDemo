@@ -15,4 +15,10 @@ public abstract class BasePage {
     public void InitPage() {
         PageFactory.initElements(webDriver, this);
     }
+
+    public WebDriver getWebDriver(){
+        return webDriver;
+    }
+
+
 }

@@ -3,9 +3,7 @@ package com.ea.SpringBasic.pages;
 
 import org.openqa.selenium.WebDriver;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.beans.factory.config.ConfigurableBeanFactory;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
@@ -17,7 +15,7 @@ public class MainPage {
     private LoginPage loginPage;
 
     @Autowired
-    private HomePage homePage;
+    private GuidesPage guidesPage;
 
     @Autowired
     private WebDriver webDriver;
@@ -25,8 +23,8 @@ public class MainPage {
     public void PerformLogin() {
 
         webDriver.navigate().to("http://eaapp.somee.com");
-        homePage.ClickLogin();
-        loginPage.Login("admin", "password");
+        guidesPage.ClickLogin();
+        loginPage.enterData("admin", "password");
         loginPage.ClickLogin();
     }
 }
