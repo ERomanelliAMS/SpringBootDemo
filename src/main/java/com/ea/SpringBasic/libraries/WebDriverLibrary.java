@@ -17,18 +17,20 @@ public class WebDriverLibrary {
 
     @Bean
     @ConditionalOnProperty(name = "browser", havingValue = "chrome")
+    @Scope("driverscope")
     public WebDriver getChromeDriver() {
 
         ChromeOptions chromeOptions = new ChromeOptions();
         chromeOptions.addArguments("--headless");
         WebDriverManager.chromedriver().setup();
-        return new ChromeDriver();
+        return new ChromeDriver(chromeOptions);
     }
 
     @Bean
     @ConditionalOnProperty(name = "browser", havingValue = "firefox")
     @Scope("driverscope")
     public WebDriver getFirefoxDriver() {
+
         FirefoxOptions firefoxOptions = new FirefoxOptions();
         firefoxOptions.addArguments("--headless");
         WebDriverManager.firefoxdriver().setup();
