@@ -31,7 +31,7 @@ public class LoginSteps {
     public void iEnterDataForLoging(DataTable table) {
 
         //Scenario scope
-        testUserDetails.setUserDetails(new UserDetails("ezeuniversity03@test.com", "avemaria1"));
+        testUserDetails.setUserDetails(new UserDetails("ezeuniversity@test.com", "avemaria1"));
 
         loginPage.enterData(testUserDetails.getUserDetails().getUsername(), testUserDetails.getUserDetails().getPassword());
 

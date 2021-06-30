@@ -22,7 +22,7 @@ public class WebDriverLibrary {
         ChromeOptions chromeOptions = new ChromeOptions();
         chromeOptions.addArguments("--headless");
         WebDriverManager.chromedriver().setup();
-        return new ChromeDriver(chromeOptions);
+        return new ChromeDriver();
     }
 
     @Bean
